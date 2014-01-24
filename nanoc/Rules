@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
 
+# sudo gem install nanoc haml kramdown
+
 # A few helpful tips about the Rules file:
 #
 # * The string given to #compile and #route are matching patterns for
@@ -18,10 +20,15 @@ compile '/stylesheet/' do
 end
 
 compile '*' do
-  if item.binary?
-    # don’t filter binary items
-  else
-    filter :erb
+  unless item.binary?
+    case item[:extension]
+      when 'md'
+        filter :kramdown
+      when 'haml'
+        filter :haml
+      when 'html'
+        filter :erb
+    end
     layout 'default'
   end
 end

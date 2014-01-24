@@ -2,20 +2,26 @@
   margin: 0;
   padding: 0;
 
-  font-family: Georgia, Palatino, serif;
+  font-family: 'Arial-BoldMT','Arial',sans-serif;
+  color: #584D4D;
 }
 
 body {
   background: #fff;
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: 400;
 }
 
 a {
-  text-decoration: none;
 }
 
-a:link,
+a:link {
+  color: #584D4D;
+  text-decoration: underline;
+}
 a:visited {
-  color: #f30;
+  color: #797979;
 }
 
 a:hover {
@@ -28,24 +34,46 @@ a:hover {
   top: 40px;
   left: 280px;
 
-  width: 500px;
+  width: 600px;
 }
 
 #main h1 {
-  font-size: 40px;
-  font-weight: normal;
+  color: #A7A7A7;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 42px;
+  text-align: center;
+}
 
-  line-height: 40px;
+#main h2 {
+  margin-top: 2ex;
+  color: #A7A7A7;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 23px;
+}
 
-  letter-spacing: -1px;
+#main h2 a {
+  text-decoration: none;
 }
 
 #main p {
   margin: 20px 0;
+}
 
-  font-size: 15px;
+.centered {
+  text-align: center;
+}
+#main p.date {
+  font-size: 90%;
+  font-weight: bold;
+}
 
-  line-height: 20px;
+.box {
+  border-width:medium;
+  border-color:#AAA;
+  border-style:solid;
+  padding:1ex;
 }
 
 #main ul, #main ol {
@@ -60,6 +88,16 @@ a:hover {
 
 #main ul li {
   list-style-type: square;
+}
+
+#main dl dt {
+  font-weight: bold;
+}
+#main dl dt:after {
+  content:":";
+}
+#main dl dd {
+   margin-left: 3ex;
 }
 
 #sidebar {

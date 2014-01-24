@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <title>CocoaHeads München - <%= @item[:title] %></title>
+    <link rel="stylesheet" href="/style.css">
+
+    <!-- you don't need to keep this, but it's cool for stats! -->
+    <meta name="generator" content="nanoc <%= Nanoc::VERSION %>">
+  </head>
+  <body>
+    <div id="main">
+      <%= yield %>
+    </div>
+    <div id="sidebar">
+      <ul id="widget0-navbar-list" class="navbar-list">
+        <li class="current-page"><a href="/">CocoaHeads&nbsp;München</a></li>
+        <li class="noncurrent-page"><a href="/Uber_Uns/">Über&nbsp;Uns</a></li>
+      </ul>
+    </div>
+  </body>
+</html>

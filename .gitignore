@@ -1,3 +1,4 @@
 .DS_Store
-cocoaheads-muc.de/output/
-cocoaheads-muc.de/tmp/
+nanoc/output/
+nanoc/tmp/
+nanoc/crash.log
