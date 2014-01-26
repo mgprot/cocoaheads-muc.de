@@ -24,12 +24,14 @@ compile '*' do
     case item[:extension]
       when 'md'
         filter :kramdown
+        layout 'default'
       when 'haml'
         filter :haml
+        layout 'default'
       when 'html'
         filter :erb
+        layout 'default'
     end
-    layout 'default'
   end
 end
 
@@ -39,11 +41,15 @@ end
 
 route '*' do
   if item.binary?
-    # Write item with identifier /foo/ to /foo.ext
     item.identifier.chop + '.' + item[:extension]
+  elsif item[:is_partial] || item[:kind] == 'article'
+    # Don’t output partial items (e.g. sub-stylesheets)
+    nil
+  elsif item[:path]
+    item[:path]
   else
-    # Write item with identifier /foo/ to /foo/index.html
-    item.identifier + 'index.html'
+    # Place each file in its own directory
+    rep.item.identifier + 'index.html'
   end
 end
 
