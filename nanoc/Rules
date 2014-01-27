@@ -15,8 +15,16 @@
 #   item, use the pattern “/about/*/”; “/about/*” will also select the parent,
 #   because “*” matches zero or more characters.
 
-compile '/stylesheet/' do
-  # don’t filter or layout
+compile 'posts/*' do
+  # todo: allow more formats?
+  filter :kramdown
+  layout 'post'
+end
+
+route '/posts/*' do
+    # todo: rather use item[:date] and item[:title] ?
+    y,m,d,slug = /(20[0-9]{2})\-([0-9]{2})\-([0-9]{2})\-([^\/]+)/.match(item.identifier).captures
+    "/posts/#{y}-#{m}-#{d}-#{slug}/index.html"
 end
 
 compile '*' do
@@ -28,11 +36,15 @@ compile '*' do
       when 'haml'
         filter :haml
         layout 'default'
-      when 'html'
+      when 'erb'
         filter :erb
         layout 'default'
     end
   end
+end
+
+compile '/stylesheet/' do
+  # don’t filter or layout
 end
 
 route '/stylesheet/' do

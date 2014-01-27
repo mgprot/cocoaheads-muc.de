@@ -1,8 +1,8 @@
 --- 
 title: Ein paar Tips vom NSConference
+date: 2009-05-19T19:00:00+0200
+kind: article
 ---
-
-# NSConference Quick-Tip Videos
 
 {: .date}
 Samstag, 16. Mai 2009

@@ -1,0 +1,12 @@
+---
+title: Archiv
+# inspired by http://chodounsky.net/2013/05/29/blog-posts-with-nanoc/
+---
+<ul>
+<% sorted_articles_by_key(:date).each do |post| %>
+  <li>    
+    <%= post[:date].to_date_time(:human) %>: <%= link_to post[:title], post.path %>
+  </li>
+<% end %>
+</ul>
+<!-- p class="pull-right"><a href="/">Zurück &rarr;</a></p -->

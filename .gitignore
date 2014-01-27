@@ -2,3 +2,4 @@
 nanoc/output/
 nanoc/tmp/
 nanoc/crash.log
+nanoc/bin/deploy.sh

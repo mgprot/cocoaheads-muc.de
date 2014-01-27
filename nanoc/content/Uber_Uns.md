@@ -2,8 +2,6 @@
 title: Die Münchner CocoaHeads
 ---
 
-# Die Münchner CocoaHeads
-
 Ort
 : Restaurant [India Gate](http://indiagate-muenchen.de/)  
   [Arnulfstr. 114](http://www.openstreetmap.org/way/118176295#map=18/48.14591/11.53914&layers=C),  
