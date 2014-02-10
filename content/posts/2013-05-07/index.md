@@ -1,7 +1,6 @@
 --- 
 title: Autolayout
-speakers:
-  - tt
+speakers: [ Thomas Tempelmann ]
 host: tumblinger
 tags:
   - Talk

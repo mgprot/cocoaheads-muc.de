@@ -1,4 +1,6 @@
 <% render "default" do %>
-  <div class="post">
-    <%= yield %>
-  </div><% end %>
+  <p class="dtstart" title="<%= @item[:date] %>"><%= @item[:date].to_date_time(:human) %><% @item[:speakers].each do |speaker|
+  %>, <span class="attendee"><%= speaker %></span><% end %>:</p>
+  <h1 class="summary"><%= @item[:title] %></h1>
+  <%= yield %>
+<% end %>

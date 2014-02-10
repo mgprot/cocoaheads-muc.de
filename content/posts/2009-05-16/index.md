@@ -1,5 +1,6 @@
 --- 
 title: Ein paar Tips vom NSConference
+speakers: [ ]
 ---
 
 15.4. bis 17.4.2009 fand der erste NSConference statt.

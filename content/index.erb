@@ -2,12 +2,13 @@
 title: CocoaHeads München
 # inspired by http://chodounsky.net/2013/05/29/blog-posts-with-nanoc/
 ---
-<h2>Nächstes Treffen:</h2>
+<h1><%= @item[:title] %></h1>
 <% sorted_posts_by_date[0,1].each do |post| %>
-    <div class="post-list">
-        <p><%= post[:date].to_date_time(:human) %>:</p>
-        <h2><%= link_to post[:title], post.path %></h2>
-        <%= post.compiled_content %>
-    </div>
+  <div class="post list">
+      <p class="dtstart" title="<%= post[:date] %>"><%= post[:date].to_date_time(:human) %><% post[:speakers].each do |speaker|
+  %>, <span class="attendee"><%= speaker %></span><% end %>:</p>
+    <h1 class="summary"><%= link_to post[:title], post.path %></h1>
+    <%= post.compiled_content %>
+  </div>
 <% end %>
-<p style="margin-top:5em"><a href="/archive">&rarr; Ältere Vorträge</a></p>
+<p style="margin-top:5em"><a href="/archive">&rarr; Alle Vorträge</a></p>

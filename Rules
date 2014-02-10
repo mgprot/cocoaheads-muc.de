@@ -22,9 +22,13 @@ compile 'posts/*/' do
 end
 
 route '/posts/*/' do
-  date = REGEXP_DATE_ISO.match(item[:date]).captures
-  # see helper implementation: $ grep -A10 title_folded_to_filename lib/*.rb
-  "/posts/#{date}-#{item.title_folded_to_filename}/index.html"
+	unless item[:permalink].nil? then
+		item[:permalink]
+	else
+    date = REGEXP_DATE_ISO.match(item[:date]).captures
+    # see helper implementation: $ grep -A10 title_folded_to_filename lib/*.rb
+    "/posts/#{date}-#{item.title_folded_to_filename}/"
+  end + "index.html"
 end
 
 compile '*' do
