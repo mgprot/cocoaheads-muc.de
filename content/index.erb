@@ -2,10 +2,7 @@
 title: CocoaHeads München
 # inspired by http://chodounsky.net/2013/05/29/blog-posts-with-nanoc/
 ---
-<p class="centered">Schreibst Du Cocoa software und wohnst in der Nähe von München?</p>
-<p class="centered">Jetzt gibt es auch hier eine CocoaHeads Gruppe!</p>
-<p class="centered">Schau vorbei und genieße einen Abend mit anderen Cocoa-Begeisterte...</p>
-<hr/>
+<h2>Nächstes Treffen:</h2>
 <% sorted_posts_by_date[0,1].each do |post| %>
     <div class="post-list">
         <p><%= post[:date].to_date_time(:human) %>:</p>
@@ -13,4 +10,4 @@ title: CocoaHeads München
         <%= post.compiled_content %>
     </div>
 <% end %>
-<!-- p><a href="/archive">&larr; Archiv</a></p -->
+<p style="margin-top:5em"><a href="/archive">&rarr; Ältere Vorträge</a></p>
