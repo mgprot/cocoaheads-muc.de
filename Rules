@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-# sudo gem install nanoc haml kramdown
+# sudo gem install nanoc kramdown
 
 # A few helpful tips about the Rules file:
 #

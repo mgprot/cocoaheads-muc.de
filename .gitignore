@@ -1,5 +1,5 @@
 .DS_Store
-nanoc/output/
-nanoc/tmp/
-nanoc/crash.log
-nanoc/bin/deploy.sh
+output/
+tmp/
+crash.log
+bin/deploy.sh
