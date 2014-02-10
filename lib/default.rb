@@ -24,6 +24,7 @@ class String
     t = DateTime.parse(self)
     case style
     when :human: I18n.localize t, :format => :long
+    when :default: I18n.localize t, :format => :default
     else raise "Unknown style: '#{style}'"
     end
   end

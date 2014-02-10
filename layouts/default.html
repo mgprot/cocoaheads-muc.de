@@ -4,7 +4,7 @@
   <head>
     <meta http-equiv="Content-type" content="text/html;charset=UTF-8"/>
     <title>CocoaHeads München - <%= @item[:title] %></title>
-    <link rel="profile" href="http://microformats.org/profile/hcalendar">
+    <link rel="profile" href="http://microformats.org/profile/hcalendar"/>
     <link rel="stylesheet" href="/style.css"/>
     <meta name="generator" content="nanoc <%= Nanoc::VERSION %>"/>
   </head>
@@ -25,9 +25,9 @@
     		<dt>Nächstes Treffen:</dt>
     		<dd><dl class="vevent">
     			<dt>Wann:</dt>
-    			<dd class="dtstart">Foo</dd>
+    			<dd class="dtstart" title="2014-02-13 19:00:00+01:00"><%= "2014-02-13 19:00:00".to_date_time(:default) %></dd>
     			<dt>Wo:</dt>
-    			<dd class="location">Bar</dd>
+    			<dd class="location"><a href="http://www.openstreetmap.org/?mlat=48.12696&mlon=11.55895#map=18/48.12696/11.55895&layers=C">Tumblinger Str. 20 RGB</a></dd>
     			<dt>Was/Wer:</dt>
     			<dd><span class="summary">Static Site Generators, Beispiel: nanoc und
     			cocoaheads-muc.de</span> / <span class="attendee">Marcus Rohrmoser</span></dd>
