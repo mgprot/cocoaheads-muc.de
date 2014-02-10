@@ -7,13 +7,14 @@ tags:
   - Static Site Generator
   - nanoc
   - ruby
+permalink: /posts/2014-02-13/nanoc@cocoaheads-muc.de/
 pub: Danach ab ca. 20.00 Uhr ist ein Tisch im Olé Madrid, Häberlstraße 15 reserviert.
 ---
 
-### Motivation
+## Motivation
 
-### Wieso nanoc?
+## Wieso nanoc?
 
-### Wie mache ich einen Vortrag?
+## Wie mache ich einen Vortrag?
 
-### Was passiert da?
+## Was passiert da?
