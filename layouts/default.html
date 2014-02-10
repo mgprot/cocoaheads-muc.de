@@ -4,6 +4,7 @@
   <head>
     <meta http-equiv="Content-type" content="text/html;charset=UTF-8"/>
     <title>CocoaHeads München - <%= @item[:title] %></title>
+    <link rel="profile" href="http://microformats.org/profile/hcalendar">
     <link rel="stylesheet" href="/style.css"/>
     <meta name="generator" content="nanoc <%= Nanoc::VERSION %>"/>
   </head>
@@ -22,14 +23,14 @@
     		Jeder der Cocoa programmiert, oder programmieren will, ist herzlichst eingeladen. Wir freuen
     		uns auf eine heitere und spannenden Abend zusammen!</dd>
     		<dt>Nächstes Treffen:</dt>
-    		<dd><dl>
+    		<dd><dl class="vevent">
     			<dt>Wann:</dt>
-    			<dd class="when">Foo</dd>
+    			<dd class="dtstart">Foo</dd>
     			<dt>Wo:</dt>
-    			<dd class="where">Bar</dd>
+    			<dd class="location">Bar</dd>
     			<dt>Was/Wer:</dt>
-    			<dd><span class="what">Static Site Generators, Beispiel: nanoc und
-    			cocoaheads-muc.de</span> / <span class="who">Marcus Rohrmoser</span></dd>
+    			<dd><span class="summary">Static Site Generators, Beispiel: nanoc und
+    			cocoaheads-muc.de</span> / <span class="attendee">Marcus Rohrmoser</span></dd>
     		</dl></dd>
     		<dt>Kontakt:</dt>
     		<dd><form id="subscribeform" action="https://example.com/" method="post"><dl>
