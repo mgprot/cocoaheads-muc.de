@@ -1,11 +1,6 @@
 --- 
 title: Ein paar Tips vom NSConference
-date: 2009-05-19T19:00:00+0200
-kind: article
 ---
-
-{: .date}
-Samstag, 16. Mai 2009
 
 15.4. bis 17.4.2009 fand der erste NSConference statt.
 

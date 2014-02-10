@@ -15,16 +15,16 @@
 #   item, use the pattern “/about/*/”; “/about/*” will also select the parent,
 #   because “*” matches zero or more characters.
 
-compile 'posts/*' do
+compile 'posts/*/' do
   # todo: allow more formats?
   filter :kramdown
   layout 'post'
 end
 
-route '/posts/*' do
-    # todo: rather use item[:date] and item[:title] ?
-    y,m,d,slug = /(20[0-9]{2})\-([0-9]{2})\-([0-9]{2})\-([^\/]+)/.match(item.identifier).captures
-    "/posts/#{y}-#{m}-#{d}-#{slug}/index.html"
+route '/posts/*/' do
+  # see helper implementation: $ grep -A10 title_folded_to_filename lib/*.rb
+  date = REGEXP_DATE_ISO.match(item[:date]).captures
+  "/posts/#{date}-#{item.title_folded_to_filename}/index.html"
 end
 
 compile '*' do

@@ -6,7 +6,7 @@ title: CocoaHeads München
 <p class="centered">Jetzt gibt es auch hier eine CocoaHeads Gruppe!</p>
 <p class="centered">Schau vorbei und genieße einen Abend mit anderen Cocoa-Begeisterte...</p>
 <hr/>
-<% sorted_articles_by_key(:date)[0,1].each do |post| %>
+<% sorted_posts_by_date[0,1].each do |post| %>
     <div class="post-list">
         <p><%= post[:date].to_date_time(:human) %>:</p>
         <h2><%= link_to post[:title], post.path %></h2>
