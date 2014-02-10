@@ -22,8 +22,8 @@ compile 'posts/*/' do
 end
 
 route '/posts/*/' do
-  # see helper implementation: $ grep -A10 title_folded_to_filename lib/*.rb
   date = REGEXP_DATE_ISO.match(item[:date]).captures
+  # see helper implementation: $ grep -A10 title_folded_to_filename lib/*.rb
   "/posts/#{date}-#{item.title_folded_to_filename}/index.html"
 end
 
