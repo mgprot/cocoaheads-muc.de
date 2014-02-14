@@ -28,14 +28,14 @@ pub: Danach ab ca. 20.00 Uhr ist ein Tisch im Olé Madrid, Häberlstraße 15 res
   #!bash
   $ sudo easy_install Pygments
   $ sudo gem install bundle && sudo bundle install
-  $ nanoc compile && nanoc view && open -a Safari http://localhost:3000
+  $ nanoc compile && nanoc view & open -a Safari http://localhost:3000
   ~~~~~~~~~
 
 - Website läuft auch lokal - ideal falls mal kein Netz
 
 ## Wie mache ich einen Vortrag?
 
-- Siehe [README bei github](https://github.com/mro/cocoaheads-muc.de/blob/develop/README.md)
+- Siehe [README bei github](https://github.com/mgprot/cocoaheads-muc.de)
 
 ## Was passiert da?
 
@@ -47,7 +47,7 @@ pub: Danach ab ca. 20.00 Uhr ist ein Tisch im Olé Madrid, Häberlstraße 15 res
   - nicht so wichtig (da keine DB etc.)
   - evtl. Deployment (rsync Ziel)
 - `layouts/` - na, was wohl?
-- `lib/` eigene Anpassungen, z.B. [deutsches Datum](https://github.com/mro/cocoaheads-muc.de/blob/develop/lib/default.rb#L12)
+- `lib/` eigene Anpassungen, z.B. [deutsches Datum](https://github.com/mgprot/cocoaheads-muc.de/blob/master/lib/default.rb#L12)
 
 ## Was könnte noch kommen?
 
