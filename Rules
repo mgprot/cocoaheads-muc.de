@@ -48,15 +48,15 @@ compile '*' do
   end
 end
 
-compile '/stylesheet/' do
+compile '/default/' do # default.css
   # don’t filter or layout
 end
 
-route '/stylesheet/' do
-  '/style.css'
+route '/default/' do
+  '/styles/default.css'
 end
 
-compile '/pygments/' do
+compile '/pygments/' do # pygments.css
   # don’t filter or layout
 end
 

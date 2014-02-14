@@ -20,14 +20,14 @@ pub: Danach ab ca. 20.00 Uhr ist ein Tisch im Olé Madrid, Häberlstraße 15 res
 ## Wieso nanoc?
 
 - SSG für einfache Bearbeitung + Hosting,
-- Kandidaten gibt's viele, Jekyll wäre auch eine Option,
+- Kandidaten gibt's viele, [Jekyll](http://jekyllrb.com/) wäre auch eine Option,
 - Jekyll bring IMO zu viele Abhängigkeiten mit
 - für `nanoc` genügt ein simples
 
   ~~~~~~~~~
   #!bash
-  $ sudo easy_install Pygments
-  $ sudo gem install nanoc kramdown pygments.rb
+  $ sudo gem install nanoc kramdown i18n
+  $ sudo easy_install Pygments && sudo gem install pygments.rb
   $ nanoc compile && nanoc view && open -a Safari http://localhost:3000
   ~~~~~~~~~
 

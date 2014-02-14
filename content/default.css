@@ -50,7 +50,7 @@ dt {
   line-height:  23px;
 }
 
-#main p {
+#main > p {
   margin:       20px 0;
 }
 
