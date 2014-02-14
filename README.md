@@ -2,8 +2,7 @@
 
 ## Prepare a talk (jumpstart)
 
-1. fork repository,
-2. clone repository: `$ git clone git@github.com:mro/cocoaheads-muc.de.git && cd cocoaheads-muc.de`
+1. fork & clone repository: `$ git clone git@github.com:mro/cocoaheads-muc.de.git && cd cocoaheads-muc.de`
 3. install [pygments](http://pygments.org/): `$ sudo easy_install Pygments`
 3. install [bundle](http://bundler.io/): `$ sudo gem install bundle'`
 3. install [nanoc](http://nanoc.ws/) plus dependencies: `$ bundle install`

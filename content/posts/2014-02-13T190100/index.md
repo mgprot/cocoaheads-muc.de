@@ -26,8 +26,8 @@ pub: Danach ab ca. 20.00 Uhr ist ein Tisch im Olé Madrid, Häberlstraße 15 res
 
   ~~~~~~~~~
   #!bash
-  $ sudo gem install nanoc kramdown i18n
-  $ sudo easy_install Pygments && sudo gem install pygments.rb
+  $ sudo easy_install Pygments
+  $ sudo gem install bundle && sudo bundle install
   $ nanoc compile && nanoc view && open -a Safari http://localhost:3000
   ~~~~~~~~~
 

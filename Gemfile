@@ -6,3 +6,5 @@ gem 'erubis'
 gem 'pygments.rb'
 gem 'i18n'
 gem 'nanoc'
+
+gem 'adsf'		# nanoc view
