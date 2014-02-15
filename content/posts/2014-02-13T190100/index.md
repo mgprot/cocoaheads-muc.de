@@ -64,7 +64,7 @@ nanoc
 : <http://nanoc.ws/>
 
 nanoc IRC
-: `#nanoc` bei freenode
+: [`#nanoc` bei freenode](irc://chat.freenode.net/#nanoc)
 
 kramdown
 : <http://kramdown.gettalong.org/syntax.html>
