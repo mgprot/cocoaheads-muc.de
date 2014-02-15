@@ -1,7 +1,4 @@
 #!/usr/bin/env ruby
-
-# sudo gem install nanoc kramdown
-
 # A few helpful tips about the Rules file:
 #
 # * The string given to #compile and #route are matching patterns for
@@ -15,21 +12,65 @@
 #   item, use the pattern “/about/*/”; “/about/*” will also select the parent,
 #   because “*” matches zero or more characters.
 
+preprocess do
+  items.each do |item|
+    # amend date for posts (ignore subitems) and URL-friendly title.
+    next if item[:title].nil?
+    date = item.date_from_post_identifier
+    next if date.nil?
+    raise "Date is used from directory name ONLY: " + item.identifier unless item[:date].nil?
+    item[:date] = date
+    item[:title_folded_to_filename] = item[:title].title_folded_to_filename
+  end
+end
+
 compile 'posts/*/' do
-  # todo: allow more formats?
-  filter :kramdown
-  filter :colorize_syntax, :default_colorizer => :pygmentsrb
-  layout 'post'
+  unless item.binary?
+    my_filters = {
+      'md'  => :kramdown,
+      'erb' => :erb
+    }
+    filter my_filters[ item[:extension] ]
+    filter :colorize_syntax, :default_colorizer => :pygmentsrb
+    layout 'post'
+  end
+end
+
+# posts' subdir assets.
+route '/posts/*/*/' do
+  unless item.parent[:permalink].nil? then
+    item.parent[:permalink]
+  else
+    date = REGEXP_DATE_ISO.match(item.parent[:date]).captures
+    # see helper implementation: $ grep -A10 title_folded_to_filename lib/*.rb
+    "/posts/#{date}-#{item.parent[:title_folded_to_filename]}"
+  end + item.identifier.gsub(/^\/posts\/[^\/]+(.+)\/$/,'\1') + '.' + item[:extension]
 end
 
 route '/posts/*/' do
-	unless item[:permalink].nil? then
-		item[:permalink]
-	else
+  unless item[:permalink].nil? then
+    item[:permalink]
+  else
     date = REGEXP_DATE_ISO.match(item[:date]).captures
     # see helper implementation: $ grep -A10 title_folded_to_filename lib/*.rb
-    "/posts/#{date}-#{item.title_folded_to_filename}/"
+    "/posts/#{date}-#{item[:title_folded_to_filename]}/"
   end + "index.html"
+end
+
+compile '/default/' do # default.css
+  # don’t filter or layout
+end
+
+route '/default/' do
+  '/styles' + item.identifier.chop + '.' + item[:extension]
+end
+
+compile '/pygments/' do # pygments.css
+  # don’t filter or layout
+end
+
+route '/pygments/' do
+  '/styles' + item.identifier.chop + '.' + item[:extension]
 end
 
 compile '*' do
@@ -46,22 +87,6 @@ compile '*' do
         layout 'default'
     end
   end
-end
-
-compile '/default/' do # default.css
-  # don’t filter or layout
-end
-
-route '/default/' do
-  '/styles/default.css'
-end
-
-compile '/pygments/' do # pygments.css
-  # don’t filter or layout
-end
-
-route '/pygments/' do
-  '/styles/pygments.css'
 end
 
 route '*' do

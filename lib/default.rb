@@ -8,6 +8,7 @@ include Nanoc3::Helpers::Rendering
 include Nanoc3::Helpers::LinkTo
 
 REGEXP_DATE_ISO = /(20\d{2}\-\d{2}\-\d{2})(?:T(\d{2})(\d{2})(\d{2}))?/
+REGEXP_POSTS_DATE_ISO = /^\/posts\/(20\d{2}\-\d{2}\-\d{2})(?:T(\d{2})(\d{2})(\d{2}))?\/$/
 
 # http://blog.lingohub.com/developers/2013/08/internationalization-for-ruby-i18n-gem/
 require 'i18n'
@@ -28,33 +29,10 @@ class String
     else raise "Unknown style: '#{style}'"
     end
   end
-end
 
-
-# Add a bit of magic.
-#
-class Nanoc::Item
-  # Monkey-patch [] operator to automatically pick up post date from identifier
-  # https://stackoverflow.com/questions/4470108/when-monkey-patching-a-method-can-you-call-the-overridden-method-from-the-new-i
-  alias_method :old_acc, :[]
-
-  def [](key)
-    ret = old_acc(key)
-    (ret.nil? && key == :date) ? date_from_post_path : ret
-  end
-
-  # Extract date+time from identifier.
-  # 
-  # default time to 19:00:00 if not part of the identifier.
-  def date_from_post_path
-    m = REGEXP_DATE_ISO.match(self.identifier)
-    time = m[2].nil? ? '19:00:00' : m[2..4].join(':')
-    return m.nil? ? nil : [m[1], time].join('T')
-  end
-
-  # Turn :title into something sensible as URL.
+  # Turn :title into something sensible as part of an URL.
   def title_folded_to_filename
-    self[:title].gsub(/[^a-z0-9-]/) do |c|
+    self.gsub(/[^a-z0-9-]/) do |c|
       case c
       when /\s+|\./: '-'
       when /[A-Z]+/: c.downcase
@@ -65,11 +43,24 @@ class Nanoc::Item
 end
 
 
+class Nanoc::Item
+  # Extract date+time from identifier.
+  # 
+  # default time to 19:00:00 if not part of the identifier.
+  def date_from_post_identifier
+    m = REGEXP_POSTS_DATE_ISO.match(self.identifier)
+    return nil if m.nil?
+    time = m[2].nil? ? '19:00:00' : m[2..4].join(':')
+    [m[1], time].join('T')
+  end
+end
+
+
 # Return array with all posts sorted by date (descending)
 def sorted_posts_by_date
   @items.select do |i|
-    ! ( REGEXP_DATE_ISO.match(i.identifier).nil? )
+    ! ( i[:date].nil? )
   end.sort do |a,b|
-    a.identifier <=> b.identifier
+    a[:date] <=> b[:date]
   end.reverse
 end
