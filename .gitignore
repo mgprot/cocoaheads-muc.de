@@ -1,0 +1,6 @@
+.DS_Store
+output/
+content.bak/
+tmp/
+crash.log
+bin/deploy.sh

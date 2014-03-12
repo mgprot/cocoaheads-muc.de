@@ -1,0 +1,81 @@
+#!/usr/bin/env ruby
+
+# sudo gem install nanoc kramdown
+
+# A few helpful tips about the Rules file:
+#
+# * The string given to #compile and #route are matching patterns for
+#   identifiers--not for paths. Therefore, you can’t match on extension.
+#
+# * The order of rules is important: for each item, only the first matching
+#   rule is applied.
+#
+# * Item identifiers start and end with a slash (e.g. “/about/” for the file
+#   “content/about.html”). To select all children, grandchildren, … of an
+#   item, use the pattern “/about/*/”; “/about/*” will also select the parent,
+#   because “*” matches zero or more characters.
+
+compile 'posts/*/' do
+  # todo: allow more formats?
+  filter :kramdown
+  filter :colorize_syntax, :default_colorizer => :pygmentsrb
+  layout 'post'
+end
+
+route '/posts/*/' do
+	unless item[:permalink].nil? then
+		item[:permalink]
+	else
+    date = REGEXP_DATE_ISO.match(item[:date]).captures
+    # see helper implementation: $ grep -A10 title_folded_to_filename lib/*.rb
+    "/posts/#{date}-#{item.title_folded_to_filename}/"
+  end + "index.html"
+end
+
+compile '*' do
+  unless item.binary?
+    case item[:extension]
+      when 'md'
+        filter :kramdown
+        layout 'default'
+      when 'haml'
+        filter :haml
+        layout 'default'
+      when 'erb'
+        filter :erb
+        layout 'default'
+    end
+  end
+end
+
+compile '/default/' do # default.css
+  # don’t filter or layout
+end
+
+route '/default/' do
+  '/styles/default.css'
+end
+
+compile '/pygments/' do # pygments.css
+  # don’t filter or layout
+end
+
+route '/pygments/' do
+  '/styles/pygments.css'
+end
+
+route '*' do
+  if item.binary?
+    item.identifier.chop + '.' + item[:extension]
+  elsif item[:is_partial] || item[:kind] == 'article'
+    # Don’t output partial items (e.g. sub-stylesheets)
+    nil
+  elsif item[:path]
+    item[:path]
+  else
+    # Place each file in its own directory
+    rep.item.identifier + 'index.html'
+  end
+end
+
+layout '*', :erb

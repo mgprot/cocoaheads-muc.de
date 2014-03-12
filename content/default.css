@@ -1,0 +1,103 @@
+* {
+  margin:       0;
+  padding:      0;
+  color:        black;
+}
+
+body {
+  background:   white;
+  font-size:    15px;
+  line-height:  20px;
+  font-weight:  400;
+}
+
+a:link {
+  color:        #584D4D;
+  text-decoration: underline;
+}
+a:visited {
+  color:        #797979;
+}
+
+a:hover {
+  color:        #f90;
+}
+
+dt {
+  font-weight:  bold;
+}
+
+#main {
+  position:     absolute;
+  top:          40px;
+  left:         280px;
+  width:        600px;
+}
+
+#main h1 {
+  color:        #4F2218;
+  font-size:    36px;
+  font-weight:  700;
+  line-height:  42px;
+  text-align:   center;
+}
+
+#main h2 {
+  margin-top:   2ex;
+  color:        #4F2218;
+  font-size:    20px;
+  font-weight:  400;
+  line-height:  23px;
+}
+
+#main > p {
+  margin:       20px 0;
+}
+
+.centered {
+  text-align:   center;
+}
+
+.box {
+  border-width: medium;
+  border-color: #AAA;
+  border-style: solid;
+  padding:      1ex;
+}
+
+#main ul, #main ol {
+  margin:       20px;
+}
+
+#main li {
+  font-size:    15px;
+  line-height:  20px;
+}
+
+#main ul li {
+  list-style-type: square;
+}
+
+#main dl dt:after {
+  content:":";
+}
+#main dl dd {
+   margin-left:   3ex;
+}
+
+#sidebar {
+  position:       absolute;
+  top:            40px;
+  left:           20px;
+  width:          220px;
+  padding:        20px 20px 0 0;
+  border-right:   1px solid #ccc;
+}
+
+#sidebar dt {
+	color:					#3C1C00;
+}
+
+#sidebar dl dl {
+  margin-left:    1em;
+}
