@@ -7,8 +7,8 @@ include Nanoc3::Helpers::Tagging
 include Nanoc3::Helpers::Rendering
 include Nanoc3::Helpers::LinkTo
 
-REGEXP_DATE_ISO = /(20\d{2}\-\d{2}\-\d{2})(?:T(\d{2})(\d{2})(\d{2}))?/
-REGEXP_POSTS_DATE_ISO = /^\/posts\/(20\d{2}\-\d{2}\-\d{2})(?:T(\d{2})(\d{2})(\d{2}))?\/$/
+REGEXP_DATE_ISO = /(20\d{2}\-\d{2}\-\d{2})(?:T(\d{2})(\d{2})(\d{2}))?/                     unless defined? REGEXP_DATE_ISO
+REGEXP_POSTS_DATE_ISO = /^\/posts\/(20\d{2}\-\d{2}\-\d{2})(?:T(\d{2})(\d{2})(\d{2}))?\/$/  unless defined? REGEXP_POSTS_DATE_ISO
 
 # http://blog.lingohub.com/developers/2013/08/internationalization-for-ruby-i18n-gem/
 require 'i18n'
@@ -24,8 +24,8 @@ class String
   def to_date_time style
     t = DateTime.parse(self)
     case style
-    when :human: I18n.localize t, :format => :long
-    when :default: I18n.localize t, :format => :default
+    when :human   then I18n.localize t, :format => :long
+    when :default then I18n.localize t, :format => :default
     else raise "Unknown style: '#{style}'"
     end
   end
@@ -34,8 +34,8 @@ class String
   def title_folded_to_filename
     self.gsub(/[^a-z0-9-]/) do |c|
       case c
-      when /\s+|\./: '-'
-      when /[A-Z]+/: c.downcase
+      when /\s+|\./ then '-'
+      when /[A-Z]+/ then c.downcase
       else ''
       end
     end.gsub(/\-+/,'-')
